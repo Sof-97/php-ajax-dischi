@@ -5,10 +5,10 @@ include __DIR__ . '/partials/header.php';
 <main>
     <div id="app">
         <div id="search">
-            <input type="text">
-            <select name="genre" id="genreSel">
-                <option>PlaceHolder</option>
-            </select>
+                <select @change="select" name="genre" id="genreSel" v-model="searchGenre">
+                    <option value="" disabled selected>Seleziona</option>
+                    <option v-for="item in genre" :value="item">{{item}}</option>
+                </select>
         </div>
         <div id="album">
             <div v-for="item in albums">
@@ -17,7 +17,6 @@ include __DIR__ . '/partials/header.php';
                 <p>{{item.author}}</p>
                 <p>{{item.year}}</p>
             </div>
-            
         </div>
     </div>
 </main>

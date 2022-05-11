@@ -1,4 +1,4 @@
-<?php 
+<?php
 $database = [
     [
         'title' => 'New Jersey',
@@ -44,9 +44,21 @@ $database = [
     ]
 ];
 
+$filtered = [];
+
+if(!empty($_GET['search'])){
+    foreach ($database as $elem) {
+        if($elem['genre'] == $_GET['search']){
+            $filtered[] = $elem;
+        }
+    }
+} else {
+    $filtered = $database;
+}
+
 $response = [
     'succes' => true,
-    'response' => $database,
+    'response' => $filtered,
 ];
 
 header('Content-Type: application/json');
